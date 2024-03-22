@@ -20,7 +20,7 @@ zokou({ nomCom: "lyrics",
  const searches = await Client.songs.search(question); 
  const firstSong = searches[0]; 
  const lyrics = await firstSong.lyrics(); 
- await zk.sendMessage(from, { text: lyrics}, { quoted: ms }); 
+ await zk.sendMessage(dest, { text: lyrics}, { quoted: ms }); 
  } catch (error) { 
              reply(`I did not find any lyrics for ${text}. Try searching a different song.`); 
              console.log(error); 
