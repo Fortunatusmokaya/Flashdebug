@@ -1,5 +1,8 @@
 const { zokou } = require("../framework/zokou");
 const moment = require("moment-timezone");
+const speed = require("performance-now");
+ const timestamp = speed(); 
+   const flashspeed = speed() - timestamp 
 const { default: axios } = require('axios');
 //const conf = require('../set');
 
@@ -14,10 +17,11 @@ zokou({ nomCom: 'ping',
   },
   async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
-    const { start} = new Date().getTime()
-    return repondre('*Pong!!*\n ```' + 2000 + '``` *ms*') 
-    const { end } = new Date().getTime()
-    await zok.sendMessage('*Pong!*\n ```' + (end - start) + '``` *ms*')
+
+
+   await repondre(`Pong\n${flashspeed.toFixed(4)} ms`); 
+    
+    
   }
 )
 
