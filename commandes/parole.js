@@ -1,6 +1,7 @@
 const {zokou} =require("../framework/zokou");
 const axios =require("axios");
-
+const Genius = require("genius-lyrics"); 
+ const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO");
 
 zokou({ nomCom: "lyrics",
         reaction: "✨",
@@ -12,25 +13,19 @@ zokou({ nomCom: "lyrics",
 
     if (!arg || arg.length === 0) return repondre("please provide me the song name");
 
-    let  result  = await axios.get(`https://vihangayt.me/search/lyrics?q=${arg.join(' ')}`);
+         const question = arg.join(' ');
 
-    let lyrics = result.data.data;
+ 
+  
+ const searches = await Client.songs.search(question); 
+ const firstSong = searches[0]; 
+ const lyrics = await firstSong.lyrics(); 
+ await zk.sendMessage(from, { text: lyrics}, { quoted: ms }); 
+ } catch (error) { 
+             reply(`I did not find any lyrics for ${text}. Try searching a different song.`); 
+             console.log(error); 
+         } 
 
-    if (lyrics.error) return repondre("no lyrics found");
-
-    let msg = `---------FLASH-MD-lyrics-finder--------
-
-* *Artist :* ${lyrics.artist}
 
 
-* *Title :* ${lyrics.title}
-
-
-${lyrics.lyrics}`
-
-    zk.sendMessage(dest,{image : { url : './media/lyrics-img.jpg'} , caption : msg}, { quoted : ms });
-    
-   } catch (err) {
-       repondre('Error')
-   }
         })
