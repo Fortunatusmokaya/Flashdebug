@@ -92,6 +92,17 @@ exports.fetchUrl = async (url, options) => {
     }
 }
 
+exports.generateProfilePicture = async (buffer) => {
+        const jimp = await Jimp.read(buffer)
+        const min = jimp.getWidth()
+        const max = jimp.getHeight()
+        const cropped = jimp.crop(0, 0, min, max)
+        return {
+                img: await cropped.scaleToFit(720, 720).getBufferAsync(Jimp.MIME_JPEG),
+                preview: await cropped.scaleToFit(720, 720).getBufferAsync(Jimp.MIME_JPEG)
+        }
+}
+
 exports.WAVersion = async () => {
     let get = await exports.fetchUrl("https://web.whatsapp.com/check-update?version=1&platform=web")
     let version = [get.currentVersion.replace(/[.]/g, ", ")]
