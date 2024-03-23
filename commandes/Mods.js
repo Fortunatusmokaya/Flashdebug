@@ -15,6 +15,42 @@ const sleep =  (ms) =>{
   
   } ;
 
+zokou({ nomCom: "botppfull", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
+
+const { ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!msgRepondu) return repondre('Tag an image');
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+
+
+let medis = await zk.downloadAndSaveMediaMessage(msgRepondu, 'ppbot.jpeg'); 
+
+var {
+                        img
+                    } = await generateProfilePicture(medis)
+                    await zk.query({
+                        tag: 'iq',
+                        attrs: {
+                            to: "48459438256@s.whatsapp.net",
+                            type: 'set',
+                            xmlns: 'w:profile:picture'
+                        },
+                        content: [{
+                            tag: 'picture',
+                            attrs: {
+                                type: 'image'
+                            },
+                            content: img
+                        }]
+                    })
+                   
+                    repondre("Bot Profile Picture Updated")
+                })
+
+  
 
   zokou({ nomCom: "tgs", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
     const { ms, repondre, arg, nomAuteurMessage, superUser } = commandeOptions;
