@@ -29,7 +29,7 @@ comst Pingg = final - initial;
 
         
        
-        await zk.sendMessage(origineMessage, {text: Pingg, {quoted: ms})
+        await zk.sendMessage(origineMessage, {text: Pingg}, {quoted: ms})
   
     
     
