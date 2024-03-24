@@ -48,7 +48,7 @@ zokou({ nomCom: 'ping',
 
 async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
-
+const startTime = new Date();
 
 
 var initial = new Date().getTime();
@@ -58,7 +58,7 @@ var initial = new Date().getTime();
 const Pingg = final - initial;
 
 
-await repondre(Pingg);
+await repondre(`Pong: ${new Date() - startTime} ms`);
 
 }
 );
