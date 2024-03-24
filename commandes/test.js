@@ -5,19 +5,19 @@ zokou({ nomCom: "repo", reaction: "😌", nomFichier: __filename }, async (dest,
 
 
 const githubRepo = 'https://api.github.com/repos/franceking1/Flash-Md';
-var img = 'https://telegra.ph/file/f1f2303ff4e39b0a3b6b3.jpg';
+const img = 'https://telegra.ph/file/f1f2303ff4e39b0a3b6b3.jpg';
 
 
-    fetch(githubRepo)
-        .then(response => response.json())
-        .then(data => {
+    const response = await fetch(githubRepo); 
+        const data = await response.json(); 
+
+        if (data) {
             const repoInfo = {
                 stars: data.stargazers_count,
                 forks: data.forks_count,
                 lastUpdate: data.updated_at,
                 owner: data.owner.login
             };
-
 const releaseDate = new Date(data.created_at).toLocaleDateString('en-GB');
             const lastUpdateDate = new Date(repoInfo.lastUpdate).toLocaleDateString('en-GB');
 
@@ -31,6 +31,11 @@ const gitdata = `FLASH - MD
 
 
 await zk.sendMessage(dest, { image: { url: img }, caption: gitdata });
+
+} else {
+console.log("Could not fetch data")
+
+}
 
 
 });
