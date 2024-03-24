@@ -57,7 +57,7 @@ let linkkk = `https://api.screenshotmachine.com/?key=c04d3a&url=${encodeURICompo
 
 let res = await getBuffer(linkkk);
 
-await zk.sendMessage(m.chat, { image: res }, { quoted: ms });
+await zk.sendMessage(dest, { image: res }, { quoted: ms });
 
 
 }
