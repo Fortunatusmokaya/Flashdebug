@@ -17,11 +17,19 @@ zokou({ nomCom: 'ping',
     const { ms, arg, repondre } = commandeOptions;
 
 
-        var initial = new Date().getTime();
 
-        var final = new Date().getTime();
+const initial = new Date().getTime();
+
+        const final = new Date().getTime();
+
+comst Pingg = final - initial;
+
+
+
+
+        
        
-       return await zk.sendMessage(origineMessage, {text: '_Flash MD_\n ' + (final - initial) + ' ms ', {quoted: ms})
+        await zk.sendMessage(origineMessage, {text: Pingg, {quoted: ms})
   
     
     
