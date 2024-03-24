@@ -13,8 +13,8 @@ zokou({ nomCom: 'ping',
 
        
   },
-  async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre, origineMessage } = commandeOptions;
+  async (dest, zk, origineMessage, commandeOptions) => {
+    const { ms, arg, repondre } = commandeOptions;
 
 
         var initial = new Date().getTime();
