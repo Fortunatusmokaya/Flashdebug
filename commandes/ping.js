@@ -14,20 +14,16 @@ zokou({ nomCom: 'ping',
        
   },
   async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre } = commandeOptions;
+    const { ms, arg, repondre, origineMessage } = commandeOptions;
 
 
-const pingM = await zk.sendMessage(ms.chat, { text: 'Running speed test...' }, {quoted: ms } );
-
-await zk.relayMessage(ms.chat, {
-      protocolMessage: {
-        key: pingM.key,
-        type: 14,
-        editedMessage: {
-          conversation: `Pong: ${new Date() - pingTo} ms`
-        }
-      }
-    }, {});
+        var initial = new Date().getTime();
+        const { key } = await zk.sendMessage(origineMessage, {text: '```Checking speed...```'});
+        var final = new Date().getTime();
+       
+       return await zk.sendMessage(origineMessage, {text: '_Flash MD_\n *' + (final - initial) + ' ms* ', edit: key});
+    }
+);
 
   
     
