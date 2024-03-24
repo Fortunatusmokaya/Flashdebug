@@ -22,7 +22,7 @@ const initial = new Date().getTime();
 
         const final = new Date().getTime();
 
-comst Pingg = final - initial;
+const Pingg = final - initial;
 
 
 
