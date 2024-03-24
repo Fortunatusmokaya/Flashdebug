@@ -35,3 +35,22 @@ zokou({ nomCom: 'uptime',
 
   }
 );
+
+
+zokou({ nomCom: 'ping',
+    desc: 'To check ping',
+    Categorie: 'General',
+    reaction: '⚙️', 
+    fromMe: 'true', 
+
+
+  },
+
+async (dest, zk, commandeOptions) => {
+    const { ms, arg, repondre } = commandeOptions;
+
+
+await repondre("This is a test");
+
+}
+);
