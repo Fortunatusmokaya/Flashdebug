@@ -22,9 +22,6 @@ zokou({ nomCom: 'ping',
         var final = new Date().getTime();
        
        return await zk.sendMessage(origineMessage, {text: '_Flash MD_\n *' + (final - initial) + ' ms* ', edit: key});
-    }
-);
-
   
     
     
