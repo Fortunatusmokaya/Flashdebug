@@ -50,7 +50,15 @@ async (dest, zk, commandeOptions) => {
     const { ms, arg, repondre } = commandeOptions;
 
 
-await repondre("This is a test");
+
+var initial = new Date().getTime();
+
+        var final = new Date().getTime();
+
+const Pingg = final - initial;
+
+
+await repondre(Pingg);
 
 }
 );
