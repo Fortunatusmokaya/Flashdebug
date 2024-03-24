@@ -18,10 +18,10 @@ zokou({ nomCom: 'ping',
 
 
         var initial = new Date().getTime();
-        const { key } = await zk.sendMessage(origineMessage, {text: '```Checking speed...```'});
+
         var final = new Date().getTime();
        
-       return await zk.sendMessage(origineMessage, {text: '_Flash MD_\n *' + (final - initial) + ' ms* ', edit: key});
+       return await zk.sendMessage(origineMessage, {text: '_Flash MD_\n ' + (final - initial) + ' ms ', {quoted: ms})
   
     
     
