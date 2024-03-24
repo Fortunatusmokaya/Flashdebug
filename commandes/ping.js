@@ -1,10 +1,8 @@
 const { zokou } = require("../framework/zokou");
 const moment = require("moment-timezone");
 const speed = require("performance-now");
- const timestamp = speed(); 
-   const flashspeed = speed() - timestamp 
 const { default: axios } = require('axios');
-//const conf = require('../set');
+const pingTo = new Date();
 
 
 zokou({ nomCom: 'ping',
@@ -19,7 +17,19 @@ zokou({ nomCom: 'ping',
     const { ms, arg, repondre } = commandeOptions;
 
 
-   await repondre(`Pong\n${flashspeed.toFixed(4)} ms`); 
+const pingM = await zk.sendMessage(m.chat, { text: 'Running speed test...' }, {quoted: ms } );
+
+await zk.relayMessage(ms.chat, {
+      protocolMessage: {
+        key: pingM.key,
+        type: 14,
+        editedMessage: {
+          conversation: `Pong: ${new Date() - pingTo} ms`
+        }
+      }
+    }, {});
+
+  
     
     
   }
