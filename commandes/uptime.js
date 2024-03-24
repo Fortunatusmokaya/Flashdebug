@@ -35,6 +35,19 @@ zokou({ nomCom: 'uptime',
 
   }
 );
+/*
+
+zokou({ nomCom: 'ss',
+    desc: 'screenshots website',
+    Categorie: 'General',
+    reaction: '🎥', 
+    fromMe: 'true', 
+
+},
+  async (dest, zk, commandeOptions) => {
+    const { ms, arg, repondre } = commandeOptions;
+
+if (! */
 
 
 zokou({ nomCom: 'ping',
