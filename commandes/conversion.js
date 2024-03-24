@@ -150,7 +150,7 @@ mediamsg = msgRepondu.videoMessage
   var stick = await zk.downloadAndSaveMediaMessage(mediamsg)
 
      let stickerMess = new Sticker(stick, {
-            pack: Flash-Md,
+            pack: nomAuteurMessage,
             
             type: StickerTypes.CROPPED,
             categories: ["🤩", "🎉"],
@@ -186,8 +186,8 @@ mediamsg = msgRepondu.videoMessage
   var stick = await zk.downloadAndSaveMediaMessage(mediamsg)
 
      let stickerMess = new Sticker(stick, {
-            pack: FLASH-MD,
-            
+            pack: nomAuteurMessage,
+            author: nomAuteurMessage,
             type: StickerTypes.FULL,
             categories: ["🤩", "🎉"],
             id: "12345",
@@ -252,7 +252,7 @@ zokou({ nomCom: "write", categorie: "Conversion", reaction: "👨🏿‍💻" },
     // Create the sticker
     const stickerMess = new Sticker(meme, {
       pack: nomAuteurMessage,
-      author: 'FLASH-MD',
+      author: nomAuteurMessage,
       type: StickerTypes.FULL,
       categories: ["🤩", "🎉"],
       id: "12345",
