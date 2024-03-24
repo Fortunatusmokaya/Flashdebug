@@ -47,18 +47,11 @@ zokou({ nomCom: 'ping',
   },
 
 async (dest, zk, commandeOptions) => {
-    const { ms, arg, repondre } = commandeOptions;
-const startTime = new Date();
+    const { ms, arg, repondre, dreadedspeed} = commandeOptions;
 
 
-var initial = new Date().getTime();
 
-        var final = new Date().getTime();
-
-const Pingg = final - initial;
-
-
-await repondre(`Pong: ${new Date() - startTime} ms`);
+await repondre(`${dreadedspeed.toFixed(4)} ms`);
 
 }
 );
