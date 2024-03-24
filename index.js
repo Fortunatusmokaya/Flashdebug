@@ -34,6 +34,7 @@ const pino = require("pino");
 const boom_1 = require("@hapi/boom");
 const conf = require("./set");
 const axios = require("axios");
+const speed = require("performance-now");
 let fs = require("fs-extra");
 let path = require("path");
 const FileType = require('file-type');
@@ -49,7 +50,8 @@ const {isGroupOnlyAdmin,addGroupToOnlyAdminList,removeGroupFromOnlyAdminList} = 
 let { reagir } = require(__dirname + "/framework/app");
 var session = conf.session.replace(/FLASH-MD-WA-BOT;;;=>/g,"");
 const prefixe = conf.PREFIXE;
-
+const timestamp = speed(); 
+   const dreadedspeed = speed() - timestamp 
 
 async function authentification() {
     try {
@@ -240,6 +242,7 @@ function mybotpic() {
                 arg,
                 repondre,
                 mtype,
+                dreadedspeed,
                 groupeAdmin,
                 msgRepondu,
                 auteurMsgRepondu,
