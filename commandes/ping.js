@@ -1,4 +1,4 @@
-const { zokou } = require("../framework/zokou");
+/* const { zokou } = require("../framework/zokou");
 const moment = require("moment-timezone");
 const speed = require("performance-now");
 const { default: axios } = require('axios');
@@ -36,3 +36,4 @@ await respondre(Pingg);
   }
 )
 
+*/
