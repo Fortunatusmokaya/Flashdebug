@@ -51,7 +51,7 @@ zokou({ nomCom: 'ss',
 
          const linkk = arg.join(' ');
 
-try {
+
 
 let linkkk = `https://api.screenshotmachine.com/?key=c04d3a&url=${encodeURIComponent(linkk)}&dimension=720x720`;
 
@@ -59,10 +59,7 @@ let res = await getBuffer(linkkk);
 
 await zk.sendMessage(m.chat, { image: res }, { quoted: ms });
 
-} catch (error) {
-    return repondre("something went wrong while fetching screenshot");
 
-}
 }
 );
 
