@@ -14,7 +14,7 @@ zokou({ nomCom: 'ping',
        
   },
   async (dest, zk, origineMessage, commandeOptions) => {
-    const { ms, arg, repondre } = commandeOptions;
+    const { repondre } = commandeOptions;
 
 
 
@@ -26,10 +26,10 @@ const Pingg = final - initial;
 
 
 
-
+await respondre(Pingg);
         
        
-        await zk.sendMessage(origineMessage, {text: Pingg}, {quoted: ms})
+      /*  await zk.sendMessage(origineMessage, {text: Pingg}, {quoted: ms}) */
   
     
     
