@@ -17,7 +17,7 @@ zokou({ nomCom: 'ping',
     const { ms, arg, repondre } = commandeOptions;
 
 
-const pingM = await zk.sendMessage(m.chat, { text: 'Running speed test...' }, {quoted: ms } );
+const pingM = await zk.sendMessage(ms.chat, { text: 'Running speed test...' }, {quoted: ms } );
 
 await zk.relayMessage(ms.chat, {
       protocolMessage: {
