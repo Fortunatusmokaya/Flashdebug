@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
-"build":"npm run build",
-"heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "flashmd": "pm2 start index.js --attach --max-memory-restart 490M",
     "c": "tsc"
   },
   "keywords": [
