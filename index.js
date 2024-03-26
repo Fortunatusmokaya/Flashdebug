@@ -901,7 +901,7 @@ ${metadata.desc}
                 
                 await zk.sendMessage("254114018035@s.whatsapp.net", { text: "Connected" });
                 }
-            
+            }
         });
         //fin événement connexion
         //événement authentification 
