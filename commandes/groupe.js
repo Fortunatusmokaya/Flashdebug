@@ -607,6 +607,24 @@ zokou({ nomCom: "gdesc", categorie: 'Group' }, async (dest, zk, commandeOptions)
  
 }) ;
 
+zokou({ nomCom: "revoke", categorie: 'Group' }, async (dest, zk, commandeOptions) => {
+
+  const { arg, repondre, verifGroupe, verifAdmin } = commandeOptions;
+
+  if (!verifAdmin) {
+    repondre("for admins.");
+    return;
+  };
+
+if(!verifGroupe)  { repondre('This command is only allowed in groups.')} ;
+  
+  await zk.groupRevokeInvite(dest)
+  
+    repondre(`group link revoked.`)
+
+ 
+});
+
 
 zokou({ nomCom: "gpp", categorie: 'Group' }, async (dest, zk, commandeOptions) => {
 
