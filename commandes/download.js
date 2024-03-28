@@ -1,5 +1,5 @@
 
-const {  } = require("../framework/dl/Function");
+const { mediafireDl } = require("../framework/dl/Function");
 const {zokou} = require('../framework/zokou');
 const fs = require('fs');
 const getFBInfo = require("@xaviabot/fb-downloader");
