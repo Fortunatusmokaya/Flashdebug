@@ -12,7 +12,7 @@ zokou({ nomCom: "poll",
     const { repondre, arg, ms } = commandeOptions; 
 const polll = arg.join(' ');
 
-const polll = arg.join(' ');
+
 
 let [poll, opt] = polll.split("|")
 
