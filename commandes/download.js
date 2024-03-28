@@ -1,3 +1,5 @@
+
+const {  } = require("../framework/dl/Function");
 const {zokou} = require('../framework/zokou');
 const fs = require('fs');
 const getFBInfo = require("@xaviabot/fb-downloader");
@@ -22,6 +24,43 @@ zokou({nomCom : "igdl" , categorie : "Download"},async (dest , zk , commandeOpti
     }
   
   } catch (e) {repondre("erreur survenue lors du téléchargement \n " + e)}
+  
+});
+
+
+
+zokou({nomCom : "mediafire" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
+  const {ms,repondre,arg} = commandeOptions ;
+
+  let link = arg.join(' ')
+
+  if (!arg[0]) { repondre('Provide mediafire link\n\nmediafire <valid mediafire link>');return}; 
+
+  try {
+     
+    
+        const fileInfo = await mediafireDl(link);
+
+if (fileInfo[0].size.split('MB')[0] >= 100) {
+            return m.reply('File big eh');
+        }
+
+await zk.sendMessage(
+            dest,
+            {
+                document: {
+                    url: fileInfo[0].link,
+                },
+                fileName: fileInfo[0].nama,
+                mimetype: fileInfo[0].mime,
+                caption: `flash debug downloaded: ${fileInfo[0].nama}`,  
+            },
+            { quoted: ms }
+        );
+
+    
+  
+  } catch (e) {repondre("I am unable to download the file. \n " + e)}
   
 });
 
