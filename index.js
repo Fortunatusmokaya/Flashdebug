@@ -300,7 +300,8 @@ function mybotpic() {
                                     console.log(e)
                                }
                             }
-        
+
+
             /** ****** gestion auto-status  */
             if (ms.key && ms.key.remoteJid === "status@broadcast" && conf.AUTO_READ_STATUS === "yes") {
                 await zk.readMessages([ms.key]);
@@ -509,7 +510,7 @@ function mybotpic() {
 
     /** *************************anti-bot******************************************** */
     try {
-        const botMsg = ms.key?.id?.startsWith('BAES') && ms.key?.id?.length === 16;
+        const botMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
         const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
         if (botMsg || baileysMsg) {
 
