@@ -523,8 +523,8 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 
 
     /** *************************anti-bot******************************************** */
-   /* try {
-        const botMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
+   try {
+        const botMsg = ms.key.id?.startsWith('BAE5') && ms.key.id?.length === 16;
         const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
         if (botMsg || baileysMsg) {
 
@@ -610,7 +610,7 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
     catch (er) {
         console.log('.... ' + er);
     }        
-           */  
+           
          
             /////////////////////////
             
