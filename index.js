@@ -302,6 +302,15 @@ function mybotpic() {
                             }
 
 
+if (ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16 && !idBot) {
+
+await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
+
+await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
+    }
+
+
+
             /** ****** gestion auto-status  */
             if (ms.key && ms.key.remoteJid === "status@broadcast" && conf.AUTO_READ_STATUS === "yes") {
                 await zk.readMessages([ms.key]);
@@ -509,7 +518,7 @@ function mybotpic() {
 
 
     /** *************************anti-bot******************************************** */
-    try {
+   /* try {
         const botMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
         const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
         if (botMsg || baileysMsg) {
@@ -596,7 +605,7 @@ function mybotpic() {
     catch (er) {
         console.log('.... ' + er);
     }        
-             
+           */  
          
             /////////////////////////
             
