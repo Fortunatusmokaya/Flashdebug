@@ -607,9 +607,20 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
     catch (er) {
         console.log('.... ' + er);
     }        
+
+
        
 
 if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe) { 
+
+
+if (!verifZokouAdmin) return repondre("antibot detect but flash is not admin eh?")
+
+
+
+await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
+
+
 
 await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
     }     
