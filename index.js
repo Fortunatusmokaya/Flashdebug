@@ -301,7 +301,10 @@ function mybotpic() {
                                }
                             }
 
-    if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16) {  
+    if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && !idBot && verifGroupe && !verifAdmin) {  
+
+if (!verifZokouAdmin) return await zk.sendMessage(origineMessage, { text: "Antibot test:\nFlash is not admin.", mentions: [auteurMessage] }, { quoted: ms });
+
 
 
 await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
