@@ -301,10 +301,7 @@ function mybotpic() {
                                }
                             }
 
-    if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && !idBot && verifGroupe) { 
-
-await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
-    } 
+    
 
 /* if (!verifZokouAdmin) return await zk.sendMessage(origineMessage, { text: "Antibot test:\nFlash is not admin.", mentions: [auteurMessage] }, { quoted: ms });
 
@@ -525,7 +522,7 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
     /** *************************anti-bot******************************************** */
    try {
         const botMsg = ms.key.id?.startsWith('BAE5') && ms.key.id?.length === 16;
-        const baileysMsg = ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16;
+        const baileysMsg = ms.key.id.startsWith('BAE5') && ms.key.id.length === 16;
         if (botMsg || baileysMsg) {
 
             if (mtype === 'reactionMessage') { console.log('Je ne reagis pas au reactions') ; return} ;
@@ -610,7 +607,12 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
     catch (er) {
         console.log('.... ' + er);
     }        
-           
+       
+
+if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe) { 
+
+await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
+    }     
          
             /////////////////////////
             
