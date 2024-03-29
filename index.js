@@ -301,8 +301,8 @@ function mybotpic() {
                                }
                             }
 
+    if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16) {  
 
-if (ms.key?.id?.startsWith('BAE5') && ms.key?.id?.length === 16 && !idBot) {
 
 await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
 
