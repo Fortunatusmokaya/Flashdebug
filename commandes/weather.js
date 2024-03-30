@@ -11,7 +11,7 @@ zokou({ nomCom: "weather",
       const question = arg.join(' ');
 if (!question) return repondre("Give me location...");
 
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=en`);
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${question}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=en`);
 
         const data = await response.json();
 
