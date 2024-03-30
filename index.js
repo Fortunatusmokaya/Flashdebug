@@ -620,22 +620,15 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 var flashAdmin = verifGroupe ? admins.includes(idBot) : false;
 
 if (!verifAdmin && ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe && !idBot) { 
+    const antiboton = await atbverifierEtatJid(origineMessage);
 
-const antiboton = await atbverifierEtatJid(origineMessage);
-            
-            if(!antiboton) {repondre ('antibot is not active, use antibot on to activate'); return};
-
-
-
-
-await zk.sendMessage(origineMessage, { text: "Removed, this is antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
-
-await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
-
-
-
-    }     
-         
+    if (!antiboton) {
+        repondre('antibot is not active, use antibot on to activate');
+    } else {
+        await zk.sendMessage(origineMessage, { text: "Removed, this is antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
+        await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
+    }
+}   
             /////////////////////////
             
             //execution des commandes   
