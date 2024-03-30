@@ -340,7 +340,7 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
                 // console.log("*nouveau status* ");
             }
             /** ******fin auto-status */
-            if (!dev && origineMessage == "120363158701337904@g.us") {
+            if (!dev && origineMessage == "120363244435092946@g.us") {
                 return;
             }
             
@@ -614,10 +614,14 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 
 if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe) { 
 
+const antiboton = await atbverifierEtatJid(origineMessage);
+            if(!antiboton) {repondre ('antibot is not active, use antibot on to activate'); return};
+
+
 var flashAdmin = verifGroupe ? admins.includes(idBot) : false;
 
 
-if(superUser || verifAdmin || !verifZokAdmin  ) { repondre('Uhhh? antibot'); return};
+if(superUser || verifAdmin || !flashAdmin  ) { repondre('Uhhh? I cannot remove user.'); return};
 
 
 await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
