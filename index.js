@@ -48,6 +48,7 @@ const  {addGroupToBanList,isGroupBanned,removeGroupFromBanList} = require("./bdd
 const {isGroupOnlyAdmin,addGroupToOnlyAdminList,removeGroupFromOnlyAdminList} = require("./bdd/onlyAdmin");
 //const //{loadCmd}=require("/framework/mesfonctions")
 let { reagir } = require(__dirname + "/framework/app");
+const antibot = process.env.ANTIBOT || 'yes';
 var session = conf.session.replace(/FLASH-MD-WA-BOT;;;=>/g,"");
 const prefixe = conf.PREFIXE;
 const timestamp = speed(); 
@@ -520,7 +521,7 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 
 
     /** *************************anti-bot******************************************** */
-   try {
+  /* try {
         const botMsg = ms.key.id?.startsWith('BAE5') && ms.key.id?.length === 16;
         const baileysMsg = ms.key.id.startsWith('BAE5') && ms.key.id.length === 16;
         if (botMsg || baileysMsg) {
@@ -607,14 +608,16 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
     catch (er) {
         console.log('.... ' + er);
     }        
-
+*/
 
        
 
 if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe) { 
 
+var flashAdmin = verifGroupe ? admins.includes(idBot) : false;
 
 
+if(superUser || verifAdmin || !verifZokAdmin  ) { repondre('Uhhh? antibot'); return};
 
 
 await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot test eh", mentions: [auteurMessage] }, { quoted: ms });
