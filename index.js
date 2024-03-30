@@ -612,7 +612,7 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 
        
 
-if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe) { 
+if (ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe && !idBot) { 
 
 const antiboton = await atbverifierEtatJid(origineMessage);
             if(!antiboton) {repondre ('antibot is not active, use antibot on to activate'); return};
