@@ -615,12 +615,15 @@ await zk.sendMessage(origineMessage, { text: "Removed, this is a random antibot 
 
 
 
-const antiboton = await atbverifierEtatJid(origineMessage);
-            
+
 
 var flashAdmin = verifGroupe ? admins.includes(idBot) : false;
 
-if (antiboton && !superUser && !verifAdmin && flashAdmin && ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe && !idBot) { 
+if (!verifAdmin && ms.key.id.startsWith("BAE5") && ms.key.id.length === 16 && verifGroupe && !idBot) { 
+
+const antiboton = await atbverifierEtatJid(origineMessage);
+            
+            if(!antiboton) {repondre ('antibot is not active, use antibot on to activate'); return};
 
 
 
