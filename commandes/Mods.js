@@ -16,7 +16,132 @@ const sleep =  (ms) =>{
   } ;
 
 
-zokou({ nomCom: "privacy", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
+
+
+zokou({ nomCom: "lastseen", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
+
+const { idBot, arg, ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+if (!arg[0]) {
+      repondre("Provide a setting to be updated. Example:\nlastseen all");
+      return;
+    }
+  
+    let priv = arg.join(' ');
+
+const availablepriv = ['all', 'contacts', 'contact_blacklist', 'none'];
+
+        if (!availablepriv.includes(priv)) return repondre(`Choose a setting from this list: ${availablepriv.join('/')}`);
+
+await zk.updateLastSeenPrivacy(priv)
+        await repondre(`Last seen privacy settings updated to *${priv}*`);
+
+})
+
+
+
+zokou({ nomCom: "online", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
+
+const { idBot, arg, ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+if (!arg[0]) {
+      repondre("Provide a setting to be updated. Example:\nonline all");
+      return;
+    }
+  
+    let priva = arg.join(' ');
+
+const availablepriva = ['all', 'match_last_seen'];
+
+        if (!availablepriva.includes(priva)) return repondre(`Choose a setting from this list: ${availablepriva.join('/')}`);
+
+await zk.updateOnlinePrivacy(priva)
+        await repondre(`Online privacy settings updated to *${priva}*`);
+
+})
+
+zokou({ nomCom: "mydp", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
+
+const { idBot, arg, ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+if (!arg[0]) {
+      repondre("Provide a setting to be updated. Example:\nmydp all");
+      return;
+    }
+  
+    let privac = arg.join(' ');
+
+const availableprivac = ['all', 'contacts', 'contact_blacklist', 'none'];
+        if (!availableprivac.includes(privac)) return repondre(`Choose a setting from this list: ${availableprivac.join('/')}`);
+
+await zk.updateProfilePicturePrivacy(privac)
+        await repondre(`Your profile picture privacy settings updated to *${privac}*`);
+
+})
+
+
+
+zokou({ nomCom: "mystatus", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
+
+const { idBot, arg, ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+if (!arg[0]) {
+      repondre("Provide a setting to be updated. Example:\nmystatus all");
+      return;
+    }
+  
+    let privacy = arg.join(' ');
+
+const availableprivacy = ['all', 'contacts', 'contact_blacklist', 'none'];
+        if (!availableprivacy.includes(privacy)) return repondre(`Choose a setting from this list: ${availableprivacy.join('/')}`);
+
+await zk.updateStatusPrivacy(privacy)
+        await repondre(`Your status privacy settings updated to *${privacy}*`);
+
+})
+
+
+zokou({ nomCom: "groupadd", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
+
+const { idBot, arg, ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+if (!arg[0]) {
+      repondre("Provide a setting to be updated. Example:\ngroupadd all");
+      return;
+    }
+  
+    let privacq = arg.join(' ');
+
+const availableprivacq = ['all', 'contacts', 'contact_blacklist', 'none'];
+        if (!availableprivacq.includes(privacq)) return repondre(`Choose a setting from this list: ${availableprivacq.join('/')}`);
+
+await zk.updateGroupsAddPrivacy(privacq)
+        await repondre(`Your group add privacy settings updated to *${privacq}*`);
+
+})
+
+
+
+
+
+
+
+zokou({ nomCom: "privacy", categorie: "Privacy" }, async (dest, zk, commandeOptions) => {
 
 const { idBot, ms, repondre, superUser, msgRepondu } = commandeOptions;
 
