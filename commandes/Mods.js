@@ -15,6 +15,41 @@ const sleep =  (ms) =>{
   
   } ;
 
+
+zokou({ nomCom: "privacy", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
+
+const { ms, repondre, superUser, msgRepondu } = commandeOptions;
+
+if (!superUser) {
+      repondre('Only Owners can use this command'); return;
+    }
+
+const {
+                readreceipts,
+                profile,
+                status,
+                online,
+                last,
+                groupadd,
+                calladd
+        } = await zk.fetchPrivacySettings(true);
+
+const msgg = `*Privacy settings*
+
+* name :* ${message.client.user.name}
+* online:* ${online}
+* profile :* ${profile}
+* last seen :* ${last}
+* read receipt :* ${readreceipts}
+* group add :* ${groupadd}
+* call add :* ${calladd}`;
+
+
+await repondre(msgg);
+
+});
+
+
 zokou({ nomCom: "botppfull", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
 
 const { ms, repondre, superUser, msgRepondu } = commandeOptions;
