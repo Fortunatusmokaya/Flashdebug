@@ -36,7 +36,7 @@ const {
 
 const msgg = `*Privacy settings*
 
-* name :* ${message.client.user.name}
+* name :* ${zk.user.name}
 * online:* ${online}
 * profile :* ${profile}
 * last seen :* ${last}
@@ -45,7 +45,11 @@ const msgg = `*Privacy settings*
 * call add :* ${calladd}`;
 
 
-await repondre(msgg);
+const avatar = await zk.profilePictureUrl(ms.sender, 'image').catch(_ => 'https://telegra.ph/file/b34645ca1e3a34f1b3978.jpg');
+
+await zk.sendMessage(ms.chat, { image: { url: avatar}, caption: msgg}, { quoted: ms}) 
+
+// await repondre(msgg);
 
 });
 
