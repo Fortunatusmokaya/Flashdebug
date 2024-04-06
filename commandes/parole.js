@@ -32,7 +32,42 @@ let options = []
 
 })
 
- 
+ zokou({ nomCom: "fact",
+        reaction: "🗿",
+        categorie: "General" }, async (dest, zk, commandeOptions) => {
+    
+    const { repondre, arg, ms } = commandeOptions; 
+
+
+
+const response = await fetch('https://nekos.life/api/v2/fact');
+
+
+const data = await response.json();
+
+repondre(`Fact: ${data.fact}\n\n*Powered by debuggggggggggggggg*`);
+
+
+})
+
+zokou({ nomCom: "quote",
+        reaction: "🗿",
+        categorie: "General" }, async (dest, zk, commandeOptions) => {
+    
+    const { repondre, arg, ms } = commandeOptions; 
+
+
+const response = await fetch('https://favqs.com/api/qotd');
+const data = await response.json();
+const flashhh= `
+╔════◇
+║ *Quote:* ${data.quote.body}
+║ *Author:* ${data.quote.author}
+║    
+╚════════════╝ `;
+repondre(flashhh);
+
+})
         
 zokou({ nomCom: "lyrics",
         reaction: "✨",
