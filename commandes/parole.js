@@ -68,6 +68,29 @@ const flashhh= `
 repondre(flashhh);
 
 })
+zokou({ nomCom: "define",
+        reaction: "🗿",
+        categorie: "Search" }, async (dest, zk, commandeOptions) => {
+    
+    const { repondre, arg, ms } = commandeOptions;  
+        
+if (!arg || arg.length === 0) return repondre("provide a term");
+
+         const ques = arg.join(' ');
+
+        try{
+            let { data } = await axios.get(`http://api.urbandictionary.com/v0/define?term=${ques}`)
+            var textt = `
+            Word: ${ques}
+            Definition: ${data.list[0].definition.replace(/\[/g, "").replace(/\]/g, "")}
+            Example: ${data.list[0].example.replace(/\[/g, "").replace(/\]/g, "")}`
+            return repondre(textt)
+                    } catch {
+                        return repondre(`No result for ${ques}`)
+                    }
+
+})
+
         
 zokou({ nomCom: "lyrics",
         reaction: "✨",
