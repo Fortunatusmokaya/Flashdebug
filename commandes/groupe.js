@@ -106,7 +106,7 @@ const users = (await Promise.all(
           .filter((v) => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
           .map(async (v) => [
             v,
-            await client.onWhatsApp(v + '@s.whatsapp.net'),
+            await zk.onWhatsApp(v + '@s.whatsapp.net'),
           ]),
   )).filter((v) => v[1][0]?.exists).map((v) => v[0] + '@c.us');
 
@@ -126,7 +126,7 @@ const response = await zk.query({
   });
 
 
-const pp = await client.profilePictureUrl(m.chat, 'image').catch((_) => "https://telegra.ph/file/39436fea9098ae0aeded3.jpg");
+const pp = await zk.profilePictureUrl(m.chat, 'image').catch((_) => "https://telegra.ph/file/39436fea9098ae0aeded3.jpg");
 let jpegThumbnail = Buffer.alloc(0);
 
 if (pp) {
@@ -162,7 +162,7 @@ const teza = `I cannot add @${jid.split('@')[0]} due to privacy settings, sendin
 await repondre(teza);
 
 
-let links = `You have been invited to join the group ${groupMetadata.subject}:\n\nhttps://chat.whatsapp.com/${respon}\n\nDebug bot 🤖`
+let links = `You have been invited to join the group ${zk.groupMetadata.subject}:\n\nhttps://chat.whatsapp.com/${respon}\n\nDebug bot 🤖`
 
 await zk.sendMessage(jid, { image: { url: pp}, caption: links}, { quoted: ms});
 
