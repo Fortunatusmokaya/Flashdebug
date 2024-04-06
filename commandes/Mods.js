@@ -18,7 +18,7 @@ const sleep =  (ms) =>{
 
 zokou({ nomCom: "privacy", categorie: "Mods" }, async (dest, zk, commandeOptions) => {
 
-const { ms, repondre, superUser, msgRepondu } = commandeOptions;
+const { idBot, ms, repondre, superUser, msgRepondu } = commandeOptions;
 
 if (!superUser) {
       repondre('Only Owners can use this command'); return;
@@ -45,11 +45,11 @@ const msgg = `*Privacy settings*
 * call add :* ${calladd}`;
 
 
-const avatar = await zk.profilePictureUrl(ms.sender, 'image').catch(_ => 'https://telegra.ph/file/b34645ca1e3a34f1b3978.jpg');
+const avatar = await zk.profilePictureUrl(idBot, 'image').catch(_ => 'https://telegra.ph/file/b34645ca1e3a34f1b3978.jpg');
 
 await zk.sendMessage(dest, { image: { url: avatar}, caption: msgg}, { quoted: ms}) 
 
-await repondre(msgg);
+// await repondre(msgg);
 
 });
 
