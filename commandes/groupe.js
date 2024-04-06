@@ -10,7 +10,7 @@ const fs = require("fs-extra");
 const conf = require("../set");
 const { default: axios } = require('axios');
 //const { uploadImageToImgur } = require('../framework/imgur');
-
+const {getBinaryNodeChild, getBinaryNodeChildren} = require('@whiskeysockets/baileys').default;
 
 
 
@@ -77,6 +77,98 @@ Click Here To Join :${lien}`
 
 
 });
+
+
+
+
+zokou({ nomCom: "add", categorie: 'Group', reaction: "👨🏿‍💼" }, async (dest, zk, commandeOptions) => {
+  let { repondre, msgRepondu, infosGroupe, auteurMsgRepondu, verifGroupe, auteurMessage, superUser, idBot, arg } = commandeOptions;
+  let membresGroupe = verifGroupe ? await infosGroupe.participants : ""
+  if (!verifGroupe) { return repondre("For groups"); }
+
+
+  let metadata = await zk.groupMetadata(dest) ;
+
+      let participants = metadata.participants ;
+
+if (!arg[0]) {
+      repondre("Provide number to be added. Example:\nadd 25472222222222");
+      return;
+    }
+  
+    let num = arg.join(' ');
+
+const _participants = participants.map((user) => user.id);
+
+const users = (await Promise.all(
+      num.split(',')
+          .map((v) => v.replace(/[^0-9]/g, ''))
+          .filter((v) => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
+          .map(async (v) => [
+            v,
+            await client.onWhatsApp(v + '@s.whatsapp.net'),
+          ]),
+  )).filter((v) => v[1][0]?.exists).map((v) => v[0] + '@c.us');
+
+
+const response = await zk.query({
+    tag: 'iq',
+    attrs: {
+      type: 'set',
+      xmlns: 'w:g2',
+      to: dest,
+    },
+    content: users.map((jid) => ({
+      tag: 'add',
+      attrs: {},
+      content: [{tag: 'participant', attrs: {jid}}],
+    })),
+  });
+
+
+const pp = await client.profilePictureUrl(m.chat, 'image').catch((_) => "https://telegra.ph/file/39436fea9098ae0aeded3.jpg");
+let jpegThumbnail = Buffer.alloc(0);
+
+if (pp) {
+  try {
+    const respons = await fetch(pp);
+    if (respons.ok) {
+      jpegThumbnail = await respons.buffer();
+    } else {
+      console.error('Failed to fetch profile picture:', respons.statusText);
+    }
+  } catch (error) {
+    console.error('Error fetching profile picture:', error);
+  }
+}
+
+
+
+const add = getBinaryNodeChild(response, 'add');
+  const participant = getBinaryNodeChildren(add, 'participant');
+
+                 let respon = await zk.groupInviteCode(dest); 
+
+
+for (const user of participant.filter((item) => item.attrs.error == 403)) {
+
+const jid = user.attrs.jid;
+    const content = getBinaryNodeChild(user, 'add_request');
+    const invite_code = content.attrs.code;
+    const invite_code_exp = content.attrs.expiration;
+
+const teza = `I cannot add @${jid.split('@')[0]} due to privacy settings, sending an invite link instead.`;
+
+await repondre(teza);
+
+
+let links = `You have been invited to join the group ${groupMetadata.subject}:\n\nhttps://chat.whatsapp.com/${respon}\n\nDebug bot 🤖`
+
+await zk.sendMessage(jid, { image: { url: pp}, caption: links}, { quoted: ms});
+
+});
+
+
 /** *nommer un membre comme admin */
 zokou({ nomCom: "promote", categorie: 'Group', reaction: "👨🏿‍💼" }, async (dest, zk, commandeOptions) => {
   let { repondre, msgRepondu, infosGroupe, auteurMsgRepondu, verifGroupe, auteurMessage, superUser, idBot } = commandeOptions;
