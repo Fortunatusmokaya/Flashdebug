@@ -5,6 +5,12 @@ const fs = require('fs');
 const getFBInfo = require("@xaviabot/fb-downloader");
 const { default: axios } = require('axios');
 
+
+
+
+
+
+
 zokou({nomCom : "igdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
   const {ms,repondre,arg} = commandeOptions ;
 
@@ -26,6 +32,29 @@ zokou({nomCom : "igdl" , categorie : "Download"},async (dest , zk , commandeOpti
   } catch (e) {repondre("erreur survenue lors du téléchargement \n " + e)}
   
 });
+
+zokou({nomCom : "igdll" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
+  const {ms,repondre,arg} = commandeOptions;
+
+let link = arg.join(' ')
+
+  if (!arg[0]) { repondre('Please insert an Instagram video link');return};
+
+try {
+
+let igvid = await axios(`https://api.maher-zubair.tech/download/instagram?url=${link}`)
+
+if (igvid.data.data.data[0].type == 'video') {
+    zk.sendMessage(dest,{video : {url : igvid.data.data.data[0].url},caption : "Here is your Instagram Video.\n _Downloaded by_ *FLASH-MD*",gifPlayback : false },{quoted : ms}) 
+    }
+    else {
+        zk.sendMessage(dest,{image : {url : igvid.data.data.data[0].url},caption : "Here is your Instagram Image!\n _Downloaded by_ *FLASH-MD*"})
+    }
+  
+  } catch (e) {repondre("An error occurred while downloading \n " + e)}
+  
+});
+
 
 
 
