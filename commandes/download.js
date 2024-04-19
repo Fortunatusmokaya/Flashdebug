@@ -41,21 +41,23 @@ let link = arg.join(' ')
   if (!arg[0]) { repondre('Please insert an Instagram video link');return};
 
 try {
+    let igvid = await axios(`https://api.maher-zubair.tech/download/instagram?url=${link}`);
 
-let igvid = await axios(`https://api.maher-zubair.tech/download/instagram?url=${link}`)
+    if (igvid.data && igvid.data.data && igvid.data.data.data && igvid.data.data.data.length > 0) {
+        const media = igvid.data.data.data[0];
+        if (media.type === 'video') {
+            zk.sendMessage(dest, { video: { url: media.url }, caption: "Here is your Instagram Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+        } else {
+            zk.sendMessage(dest, { image: { url: media.url }, caption: "Here is your Instagram Image!\n _Downloaded by_ *FLASH-MD*" });
+        }
+    } else {
+        throw new Error("No media found in the response data");
+    }
+} catch (e) {
+    console.error("An error occurred while downloading:", e);
+}
 
-if (igvid.data.data.data[0].type == 'video') {
-    zk.sendMessage(dest,{video : {url : igvid.data.data.data[0].url},caption : "Here is your Instagram Video.\n _Downloaded by_ *FLASH-MD*",gifPlayback : false },{quoted : ms}) 
-    }
-    else {
-        zk.sendMessage(dest,{image : {url : igvid.data.data.data[0].url},caption : "Here is your Instagram Image!\n _Downloaded by_ *FLASH-MD*"})
-    }
-  
-  } catch (e) {repondre("An error occurred while downloading \n " + e)}
-  
 });
-
-
 
 
 zokou({nomCom : "mediafire" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
