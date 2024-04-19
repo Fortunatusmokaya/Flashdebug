@@ -80,7 +80,7 @@ Click Here To Join :${lien}`
 
 
 
-
+/*
 zokou({ nomCom: "addd", categorie: 'Group', reaction: "👨🏿‍💼" }, async (dest, zk, commandeOptions) => {
   let { repondre, msgRepondu, infosGroupe, auteurMsgRepondu, verifGroupe, auteurMessage, superUser, idBot, arg } = commandeOptions;
   let membresGroupe = verifGroupe ? await infosGroupe.participants : ""
@@ -168,6 +168,7 @@ await zk.sendMessage(jid, { image: { url: pp}, caption: links}, { quoted: ms});
 
 });
 
+*/
 
 /** *nommer un membre comme admin */
 zokou({ nomCom: "promote", categorie: 'Group', reaction: "👨🏿‍💼" }, async (dest, zk, commandeOptions) => {
