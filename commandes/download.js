@@ -33,7 +33,7 @@ zokou({nomCom : "igdl" , categorie : "Download"},async (dest , zk , commandeOpti
   
 });
 
-/*
+
 
 zokou({nomCom : "igdll" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
   const {ms,repondre,arg} = commandeOptions;
@@ -62,7 +62,7 @@ try {
 
 });
 
-*/
+
 
 
 
