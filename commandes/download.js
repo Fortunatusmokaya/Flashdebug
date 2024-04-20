@@ -33,6 +33,8 @@ zokou({nomCom : "igdl" , categorie : "Download"},async (dest , zk , commandeOpti
   
 });
 
+/*
+
 zokou({nomCom : "igdll" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
   const {ms,repondre,arg} = commandeOptions;
 
@@ -50,6 +52,35 @@ try {
             zk.sendMessage(dest, { video: { url: media.url }, caption: "Here is your Instagram Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
         } else {
             zk.sendMessage(dest, { image: { url: media.url }, caption: "Here is your Instagram Image!\n _Downloaded by_ *FLASH-MD*" });
+        }
+    } else {
+        throw new Error("No media found in the response data");
+    }
+} catch (e) {
+    console.error("An error occurred while downloading:", e);
+}
+
+});
+
+*/
+
+zokou({nomCom : "twtdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
+  const {ms,repondre,arg} = commandeOptions;
+
+let linkz = arg.join(' ')
+
+  if (!arg[0]) { repondre('Please insert an Instagram video link');return};
+
+try {
+    const blue = await fetch(`https://api.maher-zubair.tech/download/twitter?url=${linkz}`);
+    const data = await blue.json();
+
+    if (data && data.result && data.result.data && data.result.data.length > 0) {
+        const medi = data.result.data[0];
+        if (medi.type === 'video') {
+            zk.sendMessage(dest, { video: { url: medi.HD }, caption: "Here is your Twitter Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+        } else {
+            zk.sendMessage(dest, { image: { url: medi.HD }, caption: "Here is your Twitter Image!\n _Downloaded by_ *FLASH-MD*" });
         }
     } else {
         throw new Error("No media found in the response data");
