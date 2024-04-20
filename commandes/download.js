@@ -64,33 +64,31 @@ try {
 
 */
 
-zokou({nomCom : "twtdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
-  const {ms,repondre,arg} = commandeOptions;
+zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptions) => {
+    const { ms, repondre, arg } = commandeOptions;
+    let linkz = arg.join(' ');
 
-let linkz = arg.join(' ')
-
-  if (!arg[0]) { repondre('Please insert an Instagram video link');return};
-
-try {
-    const blue = await fetch(`https://api.maher-zubair.tech/download/twitter?url=${linkz}`);
-    const data = await blue.json();
-
-    if (data && data.result && data.result.data && data.result.data.length > 0) {
-        const medi = data.result.data[0];
-        if (medi.type === 'video') {
-            zk.sendMessage(dest, { video: { url: medi.HD }, caption: "Here is your Twitter Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
-        } else {
-            zk.sendMessage(dest, { image: { url: medi.HD }, caption: "Here is your Twitter Image!\n _Downloaded by_ *FLASH-MD*" });
-        }
-    } else {
-        throw new Error("No media found in the response data");
+    if (!arg[0]) {
+        repondre('Please insert an Instagram video link');
+        return;
     }
-} catch (e) {
-    console.error("An error occurred while downloading:", e);
-}
 
+    try {
+        const blue = await fetch(`https://api.maher-zubair.tech/download/twitter?url=${linkz}`);
+        const data = await blue.json();
+
+        if (data && data.result && data.result.data && data.result.data.length > 0) {
+            const medi = data.result.data[0];
+            if (medi.type === 'video') {
+                zk.sendMessage(dest, { video: { url: medi.HD }, caption: "Here is your Twitter Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+            } else {
+                zk.sendMessage(dest, { image: { url: medi.HD }, caption: "Here is your Twitter Image!\n _Downloaded by_ *FLASH-MD*" });
+            }
+        }
+    } catch (e) {
+        console.error("An error occurred while downloading:", e);
+    }
 });
-
 
 zokou({nomCom : "mediafire" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
   const {ms,repondre,arg} = commandeOptions ;
