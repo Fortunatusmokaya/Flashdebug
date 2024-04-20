@@ -69,7 +69,7 @@ try {
 
 
 
-/* zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptions) => {
+zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptions) => {
     const { ms, repondre, arg } = commandeOptions;
     let linkz = arg.join(' ');
 
@@ -88,6 +88,8 @@ try {
             const medi = data.data.HD;
            
                 zk.sendMessage(dest, { video: { url: medi }, caption: "Here is your Twitter Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+
+}
            
         } catch (e) { repondre("I am unable to download your media. \n " + e)}
        
@@ -96,7 +98,7 @@ try {
     
 });
 
-*/
+
 
 
 zokou({nomCom : "tktdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
@@ -117,8 +119,12 @@ if (data && data.result && data.result.url && data.result.url.nowm) {
 const nowm = data.result.url.nowm;
 
 zk.sendMessage(dest, { video: { url: nowm }, caption: "Here is your Tiktok Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+}
+
 
 } catch (e) {repondre("I am unable to download the file. \n " + e)}
+
+
 
 }); 
 
