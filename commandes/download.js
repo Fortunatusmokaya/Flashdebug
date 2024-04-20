@@ -73,6 +73,8 @@ zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptio
         return;
     }
 
+
+try {
     
         const blue = await fetch(`https://api.maher-zubair.tech/download/twitter?url=${linkz}`);
         const data = await blue.json();
@@ -82,9 +84,10 @@ zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptio
            
                 zk.sendMessage(dest, { video: { url: medi }, caption: "Here is your Twitter Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
            
-               
+        } catch (e) { repondre("I am unable to download your media. \n " + e)}
+       
             
-        }
+        
     
 });
 
