@@ -64,28 +64,7 @@ try {
 
 */
 
-zokou({nomCom : "tktdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
-  const {ms,repondre,arg} = commandeOptions;
 
-let linkx = arg.join(' ')
-
-  if (!arg[0]) { repondre('Please insert a video link');return};
-
-
-const green = await fetch(`https://api.maher-zubair.tech/download/tiktok2?url=${linkx});
-    const data = await green.json();
-
-try {
-
-if (data && data.result && data.result.url && data.result.url.nowm) {
-
-const nowm = data.result.url.nowm;
-
-zk.sendMessage(dest, { video: { url: nowm }, caption: "Here is your Tiktok Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
-
-} catch (e) {repondre("I am unable to download the file. \n " + e)}
-
-}); 
 
 
 
@@ -118,6 +97,32 @@ try {
 });
 
 */
+
+
+zokou({nomCom : "tktdl" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
+  const {ms,repondre,arg} = commandeOptions;
+
+let linkx = arg.join(' ')
+
+  if (!arg[0]) { repondre('Please insert a video link');return};
+
+
+const green = await fetch(`https://api.maher-zubair.tech/download/tiktok2?url=${linkx});
+    const data = await green.json();
+
+try {
+
+if (data && data.result && data.result.url && data.result.url.nowm) {
+
+const nowm = data.result.url.nowm;
+
+zk.sendMessage(dest, { video: { url: nowm }, caption: "Here is your Tiktok Video.\n _Downloaded by_ *FLASH-MD*", gifPlayback: false }, { quoted: ms });
+
+} catch (e) {repondre("I am unable to download the file. \n " + e)}
+
+}); 
+
+
 
 zokou({nomCom : "mediafire" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
   const {ms,repondre,arg} = commandeOptions ;
