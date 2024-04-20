@@ -107,7 +107,7 @@ let linkx = arg.join(' ')
   if (!arg[0]) { repondre('Please insert a video link');return};
 
 
-const green = await fetch(`https://api.maher-zubair.tech/download/tiktok2?url=${linkx});
+const green = await fetch(`https://api.maher-zubair.tech/download/tiktok2?url=${linkx}`);
     const data = await green.json();
 
 try {
