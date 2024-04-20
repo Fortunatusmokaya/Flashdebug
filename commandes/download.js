@@ -73,7 +73,7 @@ zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptio
         return;
     }
 
-    try {
+    
         const blue = await fetch(`https://api.maher-zubair.tech/download/twitter?url=${linkz}`);
         const data = await blue.json();
 
@@ -85,9 +85,7 @@ zokou({ nomCom: "twtdl", categorie: "Download" }, async (dest, zk, commandeOptio
                 zk.sendMessage(dest, { image: { url: medi.HD }, caption: "Here is your Twitter Image!\n _Downloaded by_ *FLASH-MD*" });
             }
         }
-    } catch (e) {
-        console.error("An error occurred while downloading:", e);
-    }
+    
 });
 
 zokou({nomCom : "mediafire" , categorie : "Download"},async (dest , zk , commandeOptions)=>{
